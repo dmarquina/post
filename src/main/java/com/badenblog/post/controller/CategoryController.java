@@ -9,6 +9,10 @@ import io.reactivex.Observable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+import java.util.Optional;
+
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryController {
@@ -22,7 +26,12 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/posts", method = RequestMethod.POST )
-    public Observable<HomePostResponse> findPostByCategory(@RequestBody CategoryIdsFilterRequest categoryIdsFilterRequest) {
-        return categoryService.findByIdCategory(categoryIdsFilterRequest);
+    public Observable<HomePostResponse> findPostByCategory(HttpServletResponse response,
+                                                           @RequestParam(required = false) String pageState,
+                                                           @RequestBody CategoryIdsFilterRequest categoryIdsFilterRequest) {
+        Map serviceResponse = categoryService.findByIdCategory(categoryIdsFilterRequest,pageState);
+        Optional.ofNullable(serviceResponse.get("pageState"))
+                .ifPresent(p -> response.setHeader("pageState", p.toString()));
+        return (Observable<HomePostResponse>) serviceResponse.get("data");
     }
 }

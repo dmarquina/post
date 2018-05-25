@@ -4,6 +4,7 @@ import com.badenblog.post.business.PostService;
 import com.badenblog.post.model.entity.HomePostEntity;
 import com.badenblog.post.model.entity.PostByCategoryEntity;
 import com.badenblog.post.model.json.post.NewPostRequest;
+import com.badenblog.post.model.json.post.response.HomePostResponse;
 import com.badenblog.post.model.udt.PostUdt;
 import com.badenblog.post.repository.PostByCategoryRepository;
 import com.badenblog.post.repository.PostRepository;
@@ -38,9 +39,9 @@ public class PostServiceImpl implements PostService{
         ResultSet resultSet = pagination.cassandraPagination(cluster,requestPageState,query);
         Iterator<Row> iterator = resultSet.iterator();
 
-        List<HomePostEntity> postFeed= new ArrayList<>();
+        List<HomePostResponse> postFeed= new ArrayList<>();
         while (resultSet.getAvailableWithoutFetching() > 0 && iterator.hasNext()) {
-            postFeed.add(convertRowPostToPostEntity(iterator.next()));
+            postFeed.add(convertRowPostToHomePostResponse(iterator.next()));
         }
         PagingState responsePageState = resultSet.getExecutionInfo().getPagingState();
 
@@ -114,18 +115,18 @@ public class PostServiceImpl implements PostService{
         return homePostEntity;
     }
 
-    private HomePostEntity convertRowPostToPostEntity(Row row){
-        HomePostEntity homePostEntity = new HomePostEntity();
+    private HomePostResponse convertRowPostToHomePostResponse(Row row){
+        HomePostResponse homePostResponse = new HomePostResponse();
 
-        homePostEntity.setId((row.getUUID("id")));
-        homePostEntity.setName(row.getString("name"));
-        homePostEntity.setDescription(row.getString("description"));
-        homePostEntity.setMinAge(row.getInt("min_age"));
-        homePostEntity.setCreationDate(row.getDate("creation_date"));
-        homePostEntity.setCategories(row.getSet("categories",String.class));
-        homePostEntity.setMaterials(row.getSet("materials",String.class));
+        homePostResponse.setId((row.getUUID("id")));
+        homePostResponse.setName(row.getString("name"));
+        homePostResponse.setDescription(row.getString("description"));
+        homePostResponse.setMinAge(row.getInt("min_age"));
+        homePostResponse.setCreationDate(row.getDate("creation_date"));
+        homePostResponse.setCategories(row.getSet("categories",String.class));
+        homePostResponse.setMaterials(row.getSet("materials",String.class));
 
-        return homePostEntity;
+        return homePostResponse;
     }
 
 }

@@ -5,9 +5,11 @@ import com.badenblog.post.model.json.post.CategoryIdsFilterRequest;
 import com.badenblog.post.model.json.post.response.HomePostResponse;
 import io.reactivex.Observable;
 
+import java.util.Map;
+
 
 public interface CategoryService {
     Observable<CategoryEntity> findAll();
 
-    Observable<HomePostResponse> findByIdCategory(CategoryIdsFilterRequest categoryIds);
+    Map findByIdCategory(CategoryIdsFilterRequest categoryIds, String pageState);
 }
