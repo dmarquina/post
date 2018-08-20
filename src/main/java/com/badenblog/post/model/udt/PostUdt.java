@@ -37,4 +37,10 @@ public class PostUdt {
 
     @Column("materials")
     private Set<String> materials = new HashSet<>();
+
+    @Column("uid")
+    private String uid;
+
+    @Column("user_displayname")
+    private String userDisplayName;
 }

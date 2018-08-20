@@ -93,11 +93,15 @@ public class PostServiceImpl implements PostService{
         postUdt.setDescription(homePostEntity.getDescription());
         postUdt.setMinAge(homePostEntity.getMinAge());
         postUdt.setMaterials(homePostEntity.getMaterials());
+        postUdt.setUid(homePostEntity.getUid());
+        postUdt.setUserDisplayName(homePostEntity.getUserDisplayName());
         return postUdt;
     }
 
     private HomePostEntity convertNewPostRequestToEntity(NewPostRequest newPostRequest) {
         HomePostEntity homePostEntity = new HomePostEntity();
+        homePostEntity.setUid(newPostRequest.getUid());
+        homePostEntity.setUserDisplayName(newPostRequest.getUserDisplayName());
         homePostEntity.setId(UUID.randomUUID());
         homePostEntity.setName(newPostRequest.getName());
         homePostEntity.setDescription(newPostRequest.getDescription());
@@ -117,7 +121,6 @@ public class PostServiceImpl implements PostService{
 
     private HomePostResponse convertRowPostToHomePostResponse(Row row){
         HomePostResponse homePostResponse = new HomePostResponse();
-
         homePostResponse.setId((row.getUUID("id")));
         homePostResponse.setName(row.getString("name"));
         homePostResponse.setDescription(row.getString("description"));
@@ -125,6 +128,8 @@ public class PostServiceImpl implements PostService{
         homePostResponse.setCreationDate(row.getDate("creation_date"));
         homePostResponse.setCategories(row.getSet("categories",String.class));
         homePostResponse.setMaterials(row.getSet("materials",String.class));
+        homePostResponse.setUid((row.getString("uid")));
+        homePostResponse.setUserDisplayName(row.getString("user_displayname"));
 
         return homePostResponse;
     }

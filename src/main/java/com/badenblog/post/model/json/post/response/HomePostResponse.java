@@ -28,4 +28,8 @@ public class HomePostResponse {
     private Set<String> categories = new HashSet<>();
 
     private Set<String> materials= new HashSet<>();
+
+    private String uid;
+
+    private String userDisplayName;
 }

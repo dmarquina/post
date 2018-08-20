@@ -10,6 +10,8 @@ import java.util.List;
 @Setter
 @ToString
 public class NewPostRequest {
+    private String uid;
+    private String userDisplayName;
     private String name;
     private String description;
     private int minAge;

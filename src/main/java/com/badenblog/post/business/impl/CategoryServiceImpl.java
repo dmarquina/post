@@ -62,7 +62,8 @@ public class CategoryServiceImpl implements CategoryService {
         PagingState responsePageState = resultSet.getExecutionInfo().getPagingState();
 
         Map response = new HashMap();
-        Optional.ofNullable(responsePageState).ifPresent(rps -> response.put("pageState", rps.toString()));
+        Optional.ofNullable(responsePageState)
+                .ifPresent(rps -> response.put("pageState", rps.toString()));
         response.put("data", Observable.fromIterable(homePostResponse));
 
         return response;
@@ -82,7 +83,8 @@ public class CategoryServiceImpl implements CategoryService {
                         homePostResponse.setCreationDate(p.getDate("creation_date"));
                         homePostResponse.setCategories(p.getSet("categories", String.class));
                         homePostResponse.setMaterials(p.getSet("materials", String.class));
-
+                        homePostResponse.setUid((p.getString("uid")));
+                        homePostResponse.setUserDisplayName(p.getString("user_displayname"));
                         return homePostResponse;
                     })
                     .collect(Collectors.toSet());
