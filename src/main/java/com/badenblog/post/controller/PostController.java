@@ -2,8 +2,8 @@ package com.badenblog.post.controller;
 
 import com.badenblog.post.business.PostService;
 import com.badenblog.post.model.entity.HomePostEntity;
-import com.badenblog.post.model.json.post.NewPostRequest;
-import com.badenblog.post.model.json.post.response.HomePostResponse;
+import com.badenblog.post.model.json.NewPostRequest;
+import com.badenblog.post.model.json.response.HomePostResponse;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Single;

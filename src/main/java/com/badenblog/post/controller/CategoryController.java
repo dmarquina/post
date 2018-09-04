@@ -2,9 +2,8 @@ package com.badenblog.post.controller;
 
 import com.badenblog.post.business.CategoryService;
 import com.badenblog.post.model.entity.CategoryEntity;
-import com.badenblog.post.model.entity.PostByCategoryEntity;
-import com.badenblog.post.model.json.post.CategoryIdsFilterRequest;
-import com.badenblog.post.model.json.post.response.HomePostResponse;
+import com.badenblog.post.model.json.CategoryIdsFilterRequest;
+import com.badenblog.post.model.json.response.HomePostResponse;
 import io.reactivex.Observable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

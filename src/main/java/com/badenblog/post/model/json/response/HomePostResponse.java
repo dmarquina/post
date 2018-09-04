@@ -1,4 +1,4 @@
-package com.badenblog.post.model.json.post.response;
+package com.badenblog.post.model.json.response;
 
 import com.datastax.driver.core.LocalDate;
 import lombok.Getter;

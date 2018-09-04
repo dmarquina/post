@@ -2,16 +2,12 @@ package com.badenblog.post.business.impl;
 
 import com.badenblog.post.business.CategoryService;
 import com.badenblog.post.model.entity.CategoryEntity;
-import com.badenblog.post.model.entity.HomePostEntity;
-import com.badenblog.post.model.entity.PostByCategoryEntity;
-import com.badenblog.post.model.json.post.CategoryIdsFilterRequest;
-import com.badenblog.post.model.json.post.response.HomePostResponse;
-import com.badenblog.post.model.udt.PostUdt;
+import com.badenblog.post.model.json.CategoryIdsFilterRequest;
+import com.badenblog.post.model.json.response.HomePostResponse;
 import com.badenblog.post.repository.CategoryRepository;
 import com.badenblog.post.repository.PostByCategoryRepository;
 import com.badenblog.post.util.Pagination;
 import com.datastax.driver.core.*;
-import com.datastax.driver.core.schemabuilder.UDTType;
 import io.reactivex.Observable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

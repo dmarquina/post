@@ -1,7 +1,7 @@
 package com.badenblog.post.business;
 
 import com.badenblog.post.model.entity.HomePostEntity;
-import com.badenblog.post.model.json.post.NewPostRequest;
+import com.badenblog.post.model.json.NewPostRequest;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 

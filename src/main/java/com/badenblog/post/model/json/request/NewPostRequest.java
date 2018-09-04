@@ -1,4 +1,4 @@
-package com.badenblog.post.model.json.post;
+package com.badenblog.post.model.json;
 
 import lombok.Getter;
 import lombok.Setter;
